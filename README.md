@@ -40,45 +40,45 @@ Installation
 
 Clone the repository:
 
-git clone git@github.com:janreimen/Python-Analyze-SolarEdge-Registers.git
-cd Python-Analyze-SolarEdge-Registers
+* git clone git@github.com:janreimen/Python-Analyze-SolarEdge-Registers.git
+* cd Python-Analyze-SolarEdge-Registers
 
 Create a virtual environment:
 
-python3 -m venv venv
+* python3 -m venv venv
 
 Activate it:
 
-source venv/bin/activate
+* source venv/bin/activate
 
 Install the dependencies:
 
-python -m pip install --upgrade pip
-pip install -r requirements.txt
+* python -m pip install --upgrade pip
+* pip install -r requirements.txt
 
 Verify PyModbus:
 
-python -c "import pymodbus; print(pymodbus.__version__)"
+* python -c "import pymodbus; print(pymodbus.__version__)"
 
 Reading Registers
 
 The "read_registers.py" script reads the SolarEdge register range and produces a plain-text dump.
 
-Example for a SolarEdge SE6000H:
+Example for a SolarEdge SE6000H (Modbus Master : id 1):
 
-python read_registers.py 192.168.178.102 1502 1 > se6000h.txt
+* python read_registers.py 192.168.178.xxx 1502 1 > se6000h.txt
 
-Example for a SolarEdge SE16K:
+Example for a SolarEdge SE16K (Modbus Follower : id 3):
 
-python read_registers.py 192.168.178.101 1502 3 > se16k.txt
+* python read_registers.py 192.168.178.101 1502 3 > se16k.txt
 
 The arguments are:
 
-read_registers.py <IP> <PORT> <DEVICE_ID>
+* read_registers.py <IP> <PORT> <DEVICE_ID>
 
 For example:
 
-IP         = 192.168.178.102
+IP         = 192.168.0.100
 PORT       = 1502
 DEVICE_ID  = 1
 
@@ -210,7 +210,7 @@ Example Workflow
 A typical diagnostic session is:
 
 # Read the inverter
-python read_registers.py 192.168.178.102 1502 1 > se6000h.txt
+python read_registers.py 192.168.0.100 1502 1 > se6000h.txt
 
 # Analyze the complete dump
 python analyze_sunspec.py --all se6000h.txt > se6000h_analysis.txt
@@ -220,8 +220,8 @@ less se6000h_analysis.txt
 
 For another inverter:
 
-python read_registers.py 192.168.178.101 1502 3 > se16k.txt
-python analyze_sunspec.py --all se16k.txt > se16k_analysis.txt
+* python read_registers.py 192.168.0.101 1502 3 > se16k.txt
+* python analyze_sunspec.py --all se16k.txt > se16k_analysis.txt
 
 Keeping Raw Dumps Out of Git
 

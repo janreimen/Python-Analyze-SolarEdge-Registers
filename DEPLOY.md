@@ -81,7 +81,7 @@ python -m pip install -r requirements.txt
 
 The project currently requires:
 
-pymodbus>=3.10,<4
+pymodbus==3.15.0
 
 ---
 
@@ -105,11 +105,11 @@ The scripts should start without a Python import error.
 
 Example:
 
-python read_registers.py 192.168.178.102 1502 1
+python read_registers.py 192.168.0.100 1502 1
 
 If the connection is successful, the output starts with something similar to:
 
-Connected to 192.168.178.102:1502, device-id=1
+Connected to 192.168.0.100:1502, device-id=1
 
 The subsequent lines contain the raw registers.
 
@@ -119,11 +119,11 @@ The subsequent lines contain the raw registers.
 
 Save the complete output to a text file:
 
-python read_registers.py 192.168.178.102 1502 1 > se6000h.txt
+python read_registers.py 192.168.0.100 1502 1 > se6000h.txt
 
 For another inverter:
 
-python read_registers.py 192.168.178.101 1502 3 > se16k.txt
+python read_registers.py 192.168.0.100 1502 3 > se16k.txt
 
 Check the dump:
 
@@ -205,7 +205,7 @@ The dependency is intentionally restricted to the PyModbus 3.x series.
 To update to the newest compatible version:
 
 source venv/bin/activate
-python -m pip install --upgrade "pymodbus>=3.10,<4"
+python -m pip install --upgrade "pymodbus==3.15.0"
 
 Verify:
 
@@ -237,15 +237,15 @@ Keeping this environment independent prevents another SolarEdge library from cha
 
 Check basic connectivity:
 
-ping 192.168.178.102
+ping 192.168.0.100
 
 Check whether TCP port 1502 is reachable:
 
-nc -vz 192.168.178.102 1502
+nc -vz 192.168.0.100 1502
 
 For the second inverter:
 
-nc -vz 192.168.178.101 1502
+nc -vz 192.168.0.101 1502
 
 A successful result should indicate that TCP port "1502" is open.
 
@@ -267,7 +267,7 @@ cd /srv/Python-Analyze-SolarEdge-Registers
 
 source venv/bin/activate
 
-python read_registers.py 192.168.178.102 1502 1 > se6000h.txt
+python read_registers.py 192.168.0.100 1502 1 > se6000h.txt
 
 wc -l se6000h.txt
 
@@ -283,7 +283,7 @@ cd /srv/Python-Analyze-SolarEdge-Registers
 
 source venv/bin/activate
 
-python read_registers.py 192.168.178.101 1502 3 > se16k.txt
+python read_registers.py 192.168.0.101 1502 3 > se16k.txt
 
 wc -l se16k.txt
 
