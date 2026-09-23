@@ -66,11 +66,11 @@ The "read_registers.py" script reads the SolarEdge register range and produces a
 
 Example for a SolarEdge SE6000H (Modbus Master : id 1):
 
-* python read_registers.py 192.168.178.xxx 1502 1 > se6000h.txt
+* python read_registers.py 192.168.0.100 1502 1 > se6000h.txt
 
 Example for a SolarEdge SE16K (Modbus Follower : id 3):
 
-* python read_registers.py 192.168.178.101 1502 3 > se16k.txt
+* python read_registers.py 192.168.0.101 1502 3 > se16k.txt
 
 The arguments are:
 
